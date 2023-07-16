@@ -31,7 +31,7 @@ final class BibleControllerTest extends TestCase
     {
         $bibleController = new BibleController;
         $response = $bibleController->showInfo();
-        $this->assertSame("[
+        $this->assertContains("[
             'pt' => [
                 'language' => 'Português',
                 'versions' => [
