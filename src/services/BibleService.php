@@ -24,7 +24,7 @@ abstract class BibleService
         $bible = Items::fromFile(dirname(__FILE__, 2) . '/bibles' . '/' . $this->languageAbv . '/' . $version . '.json');
         
         $selectedBook = null;
-        $selectedBookIndex = 1;
+        $selectedBookIndex = 0;
         foreach ($bible as $bibleBook) {
             if ($bibleBook->abbrev == $book) {
                 $selectedBook = $bibleBook;
@@ -91,6 +91,8 @@ abstract class BibleService
         //verificar retorno correto do texto dos versiculos (backslashes nvi)
             //talvez não tenha problemas, e seja apenas uma forma de colocar aspas duplas dentro de outras aspas duplas.
             //verificar pegando texto de outra forma.
+        //melhorar tratamento de erros
+        //testes automatizados
     }
 
     public function getLanguage()
