@@ -89,6 +89,8 @@ abstract class BibleService
 
         //verificar funcionamento correto dos filtros
         //verificar retorno correto do texto dos versiculos (backslashes nvi)
+            //talvez não tenha problemas, e seja apenas uma forma de colocar aspas duplas dentro de outras aspas duplas.
+            //verificar pegando texto de outra forma.
     }
 
     public function getLanguage()
