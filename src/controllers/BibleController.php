@@ -9,36 +9,26 @@ class BibleController
     private $services;
 
     public function __construct() {
-        $this->services['pt'] = new \API\Services\PortugueseBibleService;
+        $this->services['pt'] = new \API\Services\Localization\PortugueseBibleService;
+        $this->services['en'] = new \API\Services\Localization\EnglishBibleService;
     }
     
     public function getVerses(string $lang, string $version, string $book, int $chapter, string $verses = '')
     {
         return $this->services[$lang]->getVerses($version, $book, $chapter, $verses);
-        /*
-        $response = [
-            'info' => [
-                'Language' => 'Português',
-                'version' => 'Almeida Atualizada',
-                'book' => 'Gênesis',
-                'chapter' => 23
-            ],
-            'verses' => [
-                [
-                    'number' => 1,
-                    'text' => 'No princípio criou Deus os céus e a terra.'
-                ]
-            ]
-        ];
-        return json_encode($response, JSON_UNESCAPED_UNICODE);
-        */
     }
     
     public function showInfo()
     {
-        $response = [
-
-        ];
+        $response = [];
+        foreach ($this->services as $key => $service) {
+            array_push($response, [
+                $key => [
+                    'language' => $service->getLanguage(),
+                    'versions' => $service->getVersions()
+                ]
+            ]);
+        }
         return json_encode($response, JSON_UNESCAPED_UNICODE);
     }
 }
