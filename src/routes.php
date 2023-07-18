@@ -18,7 +18,7 @@ Router::get('/', function() {
 
 Router::setDefaultNamespace('API\Controllers');
 Router::get('/{lang}/{version}/{book}/{chapter}/{verses?}', 'BibleController@getVerses')
-    ->where([ 'chapter' => '[0-9]+' ]);
+    ->where([ 'chapter' => '[0-9]+', 'verses' => '.*' ]);
 Router::get('/info', 'BibleController@showInfo');
 
 Router::start();
