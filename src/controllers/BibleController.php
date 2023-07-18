@@ -6,14 +6,16 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 class BibleController 
 {
-    public function __construct(
+    private $services;
 
-    ) {
-
+    public function __construct() {
+        $this->services['pt'] = new \API\Services\PortugueseBibleService;
     }
-
+    
     public function getVerses(string $lang, string $version, string $book, int $chapter, string $verses)
     {
+        return $this->services[$lang]->getVerses($version, $book, $chapter, $verses);
+        /*
         $response = [
             'info' => [
                 'Language' => 'Português',
@@ -29,6 +31,7 @@ class BibleController
             ]
         ];
         return json_encode($response, JSON_UNESCAPED_UNICODE);
+        */
     }
     
     public function showInfo()
