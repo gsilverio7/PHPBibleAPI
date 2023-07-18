@@ -89,7 +89,6 @@ abstract class BibleService
 
         //verificar funcionamento correto dos filtros
         //verificar retorno correto do texto dos versiculos (backslashes nvi)
-        //se nao informar versiculos retornar todo o livro
     }
 
     public function getLanguage()

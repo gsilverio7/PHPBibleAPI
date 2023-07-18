@@ -12,7 +12,7 @@ class BibleController
         $this->services['pt'] = new \API\Services\PortugueseBibleService;
     }
     
-    public function getVerses(string $lang, string $version, string $book, int $chapter, string $verses = null)
+    public function getVerses(string $lang, string $version, string $book, int $chapter, string $verses = '')
     {
         return $this->services[$lang]->getVerses($version, $book, $chapter, $verses);
         /*
