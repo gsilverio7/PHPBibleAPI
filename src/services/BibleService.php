@@ -62,6 +62,8 @@ abstract class BibleService
     
             $selectedVerses = [];        
             $versesFilter = $this->createFilter($verses);
+            //var_dump($verses);
+            //var_dump($versesFilter);
             
             $i = 1;
             foreach ($selectedChapter as $selectedChapterVerse) {
@@ -94,7 +96,6 @@ abstract class BibleService
     
             return json_encode($response, JSON_UNESCAPED_UNICODE);
     
-            //verificar funcionamento correto dos filtros
             //verificar retorno correto do texto dos versiculos (backslashes nvi)
                 //talvez não tenha problemas, e seja apenas uma forma de colocar aspas duplas dentro de outras aspas duplas.
                 //verificar pegando texto de outra forma.
@@ -129,12 +130,14 @@ abstract class BibleService
 
         $groups = explode(',', $verses);
         foreach ($groups as $group) {
-            $start = intval(substr($group, 0));
+            $groupLimits = explode('-', $group);
+
+            $start = intval($groupLimits[0]);
             if ($start == 0) {
                 break;
             }
 
-            $end = intval(substr($group, strlen($group) - 1));
+            $end = intval($groupLimits[count($groupLimits) - 1]);
             if ($end == 0) {
                 break;
             }
