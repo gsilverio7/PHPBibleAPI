@@ -21,78 +21,93 @@ abstract class BibleService
 
     public function getVerses(string $version, string $book, int $chapter, string $verses)
     {
-        $bible = Items::fromFile(dirname(__FILE__, 2) . '/bibles' . '/' . $this->languageAbv . '/' . $version . '.json');
-        
-        $selectedBook = null;
-        $selectedBookIndex = 0;
-        foreach ($bible as $bibleBook) {
-            if ($bibleBook->abbrev == $book) {
-                $selectedBook = $bibleBook;
-                break;
-            }
-            $selectedBookIndex++;
-        }
-        
-        if (is_null($selectedBook)) {
-            return 'couldnt find that book';
-        }
+        try {
+            $biblePath = dirname(__FILE__, 2) . '/bibles' . '/' . $this->languageAbv . '/' . $version . '.json';
 
-        $selectedBookChapters = $selectedBook->chapters;
-        $selectedBookChaptersLength = count($selectedBookChapters);
-
-        if ($chapter > $selectedBookChaptersLength) {
-            return 'that book doesnt have this chapter';
-        }
-
-        $i = 1;
-        foreach ($selectedBookChapters as $bookChapter) {
-            if ($i === $chapter) {
-                $selectedChapter = $bookChapter;
-                break;
-            }
-            $i++;
-        }
-
-        $selectedVerses = [];        
-        $versesFilter = $this->createFilter($verses);
-        
-        $i = 1;
-        foreach ($selectedChapter as $selectedChapterVerse) {
-            if (in_array($i, $versesFilter) || empty($versesFilter)) {
-                array_push(
-                    $selectedVerses,
-                    [
-                        'verse' => $i,
-                        'text' => $selectedChapterVerse
-                    ] 
-                );
+            if(! file_exists($biblePath)) {
+                throw new \Exception('We do not have the version you requested.', 400);
             }
 
-            $i++;
+            $bible = Items::fromFile($biblePath);
+        
+            $selectedBook = null;
+            $selectedBookIndex = 0;
+            foreach ($bible as $bibleBook) {
+                if ($bibleBook->abbrev == $book) {
+                    $selectedBook = $bibleBook;
+                    break;
+                }
+                $selectedBookIndex++;
+            }
+            
+            if (is_null($selectedBook)) {
+                throw new \Exception('The book informed does not exist.', 400);
+            }
+    
+            $selectedBookChapters = $selectedBook->chapters;
+            $selectedBookChaptersLength = count($selectedBookChapters);
+    
+            if ($chapter > $selectedBookChaptersLength) {
+                throw new \Exception('The book you requested does not contain this chapter.', 400);
+            }
+    
+            $i = 1;
+            foreach ($selectedBookChapters as $bookChapter) {
+                if ($i === $chapter) {
+                    $selectedChapter = $bookChapter;
+                    break;
+                }
+                $i++;
+            }
+    
+            $selectedVerses = [];        
+            $versesFilter = $this->createFilter($verses);
+            
+            $i = 1;
+            foreach ($selectedChapter as $selectedChapterVerse) {
+                if (in_array($i, $versesFilter) || empty($versesFilter)) {
+                    array_push(
+                        $selectedVerses,
+                        [
+                            'verse' => $i,
+                            'text' => $selectedChapterVerse
+                        ] 
+                    );
+                }
+    
+                $i++;
+            }
+    
+            if (empty($selectedVerses)) {
+                throw new \Exception('The chapter you requested does not contain these verses.', 400);
+            }
+    
+            $response = [
+                'info' => [
+                    'language' => $this->language,
+                    'version' => $this->versions[$version] ?? $version,
+                    'book' => $this->books[$selectedBookIndex] ?? $book,
+                    'chapter' => $chapter
+                ],
+                'verses' => $selectedVerses
+            ];
+    
+            return json_encode($response, JSON_UNESCAPED_UNICODE);
+    
+            //verificar funcionamento correto dos filtros
+            //verificar retorno correto do texto dos versiculos (backslashes nvi)
+                //talvez não tenha problemas, e seja apenas uma forma de colocar aspas duplas dentro de outras aspas duplas.
+                //verificar pegando texto de outra forma.
+            //testes automatizados
+        } catch (\Exception $e) {
+            http_response_code($e->getCode());
+            $response = [
+                'error' => $e->getMessage(),
+                'code' => $e->getCode()
+            ];
+            return json_encode($response, JSON_UNESCAPED_UNICODE);
         }
 
-        if (empty($selectedVerses)) {
-            return 'that book doesnt have these verses';
-        }
-
-        $response = [
-            'info' => [
-                'language' => $this->language,
-                'version' => $this->versions[$version] ?? $version,
-                'book' => $this->books[$selectedBookIndex] ?? $book,
-                'chapter' => $chapter
-            ],
-            'verses' => $selectedVerses
-        ];
-
-        return json_encode($response, JSON_UNESCAPED_UNICODE);
-
-        //verificar funcionamento correto dos filtros
-        //verificar retorno correto do texto dos versiculos (backslashes nvi)
-            //talvez não tenha problemas, e seja apenas uma forma de colocar aspas duplas dentro de outras aspas duplas.
-            //verificar pegando texto de outra forma.
-        //melhorar tratamento de erros
-        //testes automatizados
     }
 
     public function getLanguage()
