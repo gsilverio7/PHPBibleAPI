@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 use PHPUnit\Framework\TestCase;
 use API\Controllers\BibleController;
 
@@ -59,6 +57,21 @@ final class BibleTest extends TestCase
         $this->assertJsonStringEqualsJsonString($expectedResponse, $response);
     }
 
+    public function testWrongLanguege(): void
+    {
+        $bibleController = new BibleController;
+        $response = $bibleController->getVerses('xx', 'aa', 'gn', 1);
+        
+        $expectedResponse = [
+            'error' => 'We do not have this language available.',
+            'code' => 400
+        ];
+        $expectedResponse = json_encode($expectedResponse, JSON_UNESCAPED_UNICODE);
+
+        $this->assertEquals(400, http_response_code());        
+        $this->assertJsonStringEqualsJsonString($expectedResponse, $response);
+    }
+
     public function testShowInfo(): void
     {
         $bibleController = new BibleController;
@@ -72,4 +85,11 @@ final class BibleTest extends TestCase
         $this->assertArrayHasKey('acf', (array) $pt['versions']); 
         $this->assertArrayHasKey('nvi', (array) $pt['versions']);   
     }
+
+    //missing tests:
+        //get verses with verses intervals
+        //get version that does not exist
+        //get book that does not exist
+        //get chapter that does not exist
+        //get verses that does not exist
 }
