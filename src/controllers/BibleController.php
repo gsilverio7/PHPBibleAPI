@@ -6,6 +6,10 @@ use API\Utils\Response;
 
 class BibleController 
 {
+    /**
+     * @OA\Info(title="Bible API", version="1.0")
+     */
+
     private $services;
 
     public function __construct() {
@@ -13,6 +17,12 @@ class BibleController
         $this->services['en'] = new \API\Services\Localization\EnglishBibleService;
     }
     
+    /**
+     * @OA\Get(
+     *     path="/{lang}/{version}/{book}/{chapter}/{verses?}",
+     *     @OA\Response(response="200", description="An example resource")
+     * )
+     */
     public function getVerses(string $lang, string $version, string $book, int $chapter, string $verses = '')
     {
         if (array_key_exists($lang, $this->services)) {
