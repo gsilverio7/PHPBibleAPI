@@ -22,13 +22,13 @@ class BibleController
     {
         $response = [];
         foreach ($this->services as $key => $service) {
-            array_push($response, [
-                $key => [
-                    'language' => $service->getLanguage(),
-                    'versions' => $service->getVersions()
-                ]
-            ]);
+            $response[$key] = [
+                'language' => $service->getLanguage(),
+                'versions' => $service->getVersions()
+            ];
         }
+        // $js = json_encode($response, JSON_UNESCAPED_UNICODE);
+        // var_dump((array) json_decode($js));
         return json_encode($response, JSON_UNESCAPED_UNICODE);
     }
 }
