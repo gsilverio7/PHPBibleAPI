@@ -93,22 +93,18 @@ abstract class BibleService
                 ],
                 'verses' => $selectedVerses
             ];
-    
+
             return json_encode($response, JSON_UNESCAPED_UNICODE);
-    
-            //verificar retorno correto do texto dos versiculos (backslashes nvi)
-                //talvez não tenha problemas, e seja apenas uma forma de colocar aspas duplas dentro de outras aspas duplas.
-                //verificar pegando texto de outra forma.
-            //testes automatizados
+
         } catch (\Exception $e) {
             http_response_code($e->getCode());
             $response = [
                 'error' => $e->getMessage(),
                 'code' => $e->getCode()
             ];
+            
             return json_encode($response, JSON_UNESCAPED_UNICODE);
         }
-
     }
 
     public function getLanguage()
