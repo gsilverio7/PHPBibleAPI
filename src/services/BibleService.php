@@ -3,6 +3,7 @@
 namespace API\Services;
 
 use JsonMachine\Items;
+use API\Utils\Response;
 
 abstract class BibleService
 {
@@ -19,7 +20,7 @@ abstract class BibleService
     ];     
     
 
-    public function getVerses(string $version, string $book, int $chapter, string $verses)
+    public function getVerses(string $version, string $book, int $chapter, string $verses): string
     {
         try {
             $biblePath = dirname(__FILE__, 2) . '/bibles' . '/' . $this->languageAbv . '/' . $version . '.json';
@@ -92,25 +93,23 @@ abstract class BibleService
                 'verses' => $selectedVerses
             ];
 
-            return json_encode($response, JSON_UNESCAPED_UNICODE);
+            return Response::json($response);
 
         } catch (\Exception $e) {
-            http_response_code($e->getCode());
             $response = [
                 'error' => $e->getMessage(),
                 'code' => $e->getCode()
             ];
-            
-            return json_encode($response, JSON_UNESCAPED_UNICODE);
+            return Response::json($response, $e->getCode());
         }
     }
 
-    public function getLanguage()
+    public function getLanguage(): string
     {
         return $this->language;
     }
 
-    public function getVersions()
+    public function getVersions(): array
     {
         return $this->versions;
     }
