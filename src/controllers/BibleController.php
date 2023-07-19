@@ -2,7 +2,7 @@
 
 namespace API\Controllers;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+use API\Utils\Response;
 
 class BibleController 
 {
@@ -15,7 +15,15 @@ class BibleController
     
     public function getVerses(string $lang, string $version, string $book, int $chapter, string $verses = '')
     {
-        return $this->services[$lang]->getVerses($version, $book, $chapter, $verses);
+        if (array_key_exists($lang, $this->services)) {
+            return $this->services[$lang]->getVerses($version, $book, $chapter, $verses);
+        }
+
+        $response = [
+            'error' => 'We do not have this language available.',
+            'code' => 400
+        ];  
+        return Response::json($response, 400);
     }
     
     public function showInfo()
@@ -27,6 +35,6 @@ class BibleController
                 'versions' => $service->getVersions()
             ];
         }
-        return json_encode($response, JSON_UNESCAPED_UNICODE);
+        return Response::json($response);
     }
 }
