@@ -27,8 +27,6 @@ class BibleController
                 'versions' => $service->getVersions()
             ];
         }
-        // $js = json_encode($response, JSON_UNESCAPED_UNICODE);
-        // var_dump((array) json_decode($js));
         return json_encode($response, JSON_UNESCAPED_UNICODE);
     }
 }
