@@ -62,8 +62,6 @@ abstract class BibleService
     
             $selectedVerses = [];        
             $versesFilter = $this->createFilter($verses);
-            //var_dump($verses);
-            //var_dump($versesFilter);
             
             $i = 1;
             foreach ($selectedChapter as $selectedChapterVerse) {
