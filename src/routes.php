@@ -13,12 +13,12 @@ Router::error(function(Request $request, \Exception $exception) {
 });
 
 Router::get('/', function() {
-    return 'Hello world';
+    require_once('../public/documentation.php');
 });
 
 Router::setDefaultNamespace('API\Controllers');
-Router::get('/{lang}/{version}/{book}/{chapter}/{verses?}', 'BibleController@getVerses')
+Router::get('/api/{lang}/{version}/{book}/{chapter}/{verses?}', 'BibleController@getVerses')
     ->where([ 'chapter' => '[0-9]+', 'verses' => '.*' ]);
-Router::get('/info', 'BibleController@showInfo');
+Router::get('/api/info', 'BibleController@showInfo');
 
 Router::start();
