@@ -2,15 +2,125 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Bible API",
+        "description": "RESTful Bible API with multiple language and version support. Created with PHP without any major framework.",
         "version": "1.0"
     },
     "paths": {
-        "/{lang}/{version}/{book}/{chapter}/{verses?}": {
+        "/api/{lang}/{version}/{book}/{chapter}/{verses}": {
             "get": {
-                "operationId": "ac4f3d4269cde025102916b5ccb66906",
+                "tags": [
+                    "default"
+                ],
+                "summary": "Get bible verses",
+                "operationId": "bd6fe2a51a8ec49bd585c605a67c995f",
+                "parameters": [
+                    {
+                        "name": "lang",
+                        "in": "path",
+                        "description": "Bible Language",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "description": "Bible Version",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "book",
+                        "in": "path",
+                        "description": "Bible Book",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chapter",
+                        "in": "path",
+                        "description": "Bible Chapter",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "verses",
+                        "in": "path",
+                        "description": "Bible Verses",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "An example resource"
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "info": {
+                                            "language": "Portuguese",
+                                            "version": "Almeida Atualizada",
+                                            "book": "Gênesis",
+                                            "chapter": 1
+                                        },
+                                        "verses": {
+                                            "verse": 1,
+                                            "text": "No princípio criou Deus os céus e a terra."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad params request"
+                    }
+                }
+            }
+        },
+        "/api/info": {
+            "get": {
+                "tags": [
+                    "default"
+                ],
+                "summary": "Get info about current languages and versions available.",
+                "operationId": "756f925cff55e0f663fe56a864a0a728",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "pt": {
+                                            "language": "Portuguese",
+                                            "versions": {
+                                                "aa": "Almeida Atualizada",
+                                                "acf": "Almeida Corrigida Fiel",
+                                                "nvi": "Nova Versão Internacional"
+                                            }
+                                        },
+                                        "en": {
+                                            "language": "English",
+                                            "versions": {
+                                                "bbe": "Basic Bible English",
+                                                "kjv": "King James Version"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
