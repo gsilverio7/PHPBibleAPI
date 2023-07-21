@@ -115,13 +115,13 @@ class BibleController
      *                 example={
      *                     "pt": {
      *                         "language": "Portuguese", 
-     *                             "versions": {
-     *                                 "aa": "Almeida Atualizada", 
-     *                                 "acf": "Almeida Corrigida Fiel", 
-     *                                 "nvi": "Nova Versão Internacional"
-     *                             }
+     *                         "versions": {
+     *                                "aa": "Almeida Atualizada", 
+     *                                "acf": "Almeida Corrigida Fiel", 
+     *                                "nvi": "Nova Versão Internacional"
+     *                          }
      *                     }, 
-     *                     "en" : {
+     *                     "en": {
      *                          "language": "English", 
      *                          "versions": {
      *                                 "bbe": "Basic Bible English",
