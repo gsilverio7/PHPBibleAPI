@@ -13,7 +13,7 @@ Router::error(function(Request $request, \Exception $exception) {
 });
 
 Router::get('/', function() {
-    require_once('../api/documentation.php');
+    require_once('../public/documentation.php');
 });
 
 Router::setDefaultNamespace('API\Controllers');
