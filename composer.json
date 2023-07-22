@@ -15,10 +15,10 @@
     "scripts": {
         "serve": [
             "Composer\\Config::disableProcessTimeout",
-            "php -S localhost:8000 -t public/"
+            "php -S localhost:8000 -t api/"
         ],
         "test": "./vendor/bin/phpunit --colors=always --bootstrap ./vendor/autoload.php ./tests",
-        "documentation": "./vendor/bin/openapi src/controllers/BibleController.php -o public/openapi.json"
+        "documentation": "./vendor/bin/openapi src/controllers/BibleController.php -o api/openapi.json"
     },
     "require": {
         "pecee/simple-router": "5.3.0.5",
