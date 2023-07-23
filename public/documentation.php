@@ -14,7 +14,7 @@
 <script src="https://unpkg.com/swagger-ui-dist@3.23.1/swagger-ui-bundle.js"></script>
 <script>
     var swaggerUIOptions = {
-      url: "openapi.json",
+      url: "openapi",
       dom_id: '#ui-wrapper-new', // Determine what element to load swagger ui
       docExpansion: 'list',
       deepLinking: true, // Enables dynamic deep linking for tags and operations

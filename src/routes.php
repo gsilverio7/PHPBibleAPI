@@ -16,6 +16,10 @@ Router::get('/', function() {
     require_once(__DIR__ . '/../public/documentation.php');
 });
 
+Router::get('/openapi', function() {
+    require_once(__DIR__ . '/../api/openapi.json');
+});
+
 Router::setDefaultNamespace('API\Controllers');
 Router::get('/api/{lang}/{version}/{book}/{chapter}/{verses?}', 'BibleController@getVerses')
     ->where([ 'chapter' => '[0-9]+', 'verses' => '.*' ]);
