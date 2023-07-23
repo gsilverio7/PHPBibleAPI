@@ -40,16 +40,13 @@ Router::get('/api/{lang}/{version}/{book}/{chapter}/{verses?}',[BibleController:
 Router::get('/api/info', [BibleController::class, 'showInfo']);
 
 Router::get('/test', function() {
-    //require_once(__DIR__ . '/../api/openapi.json');
     $bc = new BibleController();
     return $bc->showInfo();
 });
 
 Router::get('/test2', function() {
-    //require_once(__DIR__ . '/../api/openapi.json');
     $bc = new \BibleAPI\Controllers\BibleController();
     return $bc->showInfo();
 });
-
 
 Router::start();
