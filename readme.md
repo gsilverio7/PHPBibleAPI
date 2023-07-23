@@ -28,8 +28,22 @@ composer serve
 
 The API has only two endpoints, wich are explained in the main page.
 
+You can get bible verses on api/{language abbreviation}/{version abbreviation}/{book abbreviation}/{chapter}/{verses}.
+
+You can access the API information on available languages and version on api/info.
+
 ## How to add new languages and versions
 
-Coming soon.
+You can add new languages and versions in three steps:
+
+- First you need the bible in json format, following the same structure of the books already in the src/bibles directory.
+- Then you need to create a new service in the src/services/localization directory, if it is a new language, or just add the new version to the already created service of given language.
+- Finally, if you created a new service for a new language, declare the new service in src/controllers/BibleController.
+
+## Pictures
+
+
+
+Sorry for the lazy readme.
 
 
