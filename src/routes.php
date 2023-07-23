@@ -8,14 +8,12 @@ use BibleAPI\Controllers\BibleController;
 
 Router::error(function(Request $request, \Exception $exception) {
     switch ($exception->getCode()) {
-        /*
         case 404:
             $errorMessage = 'Resource not found. Check the URL requested is correct.';
             break;
         case 500:
             $errorMessage = 'Something went wrong in our side. Try again later.';
             break;
-        */
         default:
             $errorMessage = $exception->getMessage();
             break;
