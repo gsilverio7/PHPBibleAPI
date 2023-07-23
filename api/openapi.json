@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Bible API",
-        "description": "RESTful Bible API with multiple language and version support. Created with PHP without any major framework.",
+        "description": "RESTful Bible API with multiple language and version support. Created with PHP without any major framework and tested with PHPUnit. Documentation made with OpenAPI/Swagger.",
         "version": "1.0"
     },
     "paths": {
@@ -12,7 +12,7 @@
                     "default"
                 ],
                 "summary": "Get bible verses",
-                "operationId": "bd6fe2a51a8ec49bd585c605a67c995f",
+                "operationId": "54762b51372edb1e6b6025c97cb2911d",
                 "parameters": [
                     {
                         "name": "lang",
@@ -94,7 +94,7 @@
                     "default"
                 ],
                 "summary": "Get info about current languages and versions available.",
-                "operationId": "756f925cff55e0f663fe56a864a0a728",
+                "operationId": "6a7a830742d18cb785379c329580aec5",
                 "responses": {
                     "200": {
                         "description": "Success",

@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use API\Controllers\BibleController;
+use BibleAPI\Controllers\BibleController;
 
 final class BibleTest extends TestCase
 {

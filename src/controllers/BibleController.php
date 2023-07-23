@@ -9,7 +9,7 @@ class BibleController
     /**
      * @OA\Info(
      *  title="Bible API", 
-     *  description="RESTful Bible API with multiple language and version support. Created with PHP without any major framework.",
+     *  description="RESTful Bible API with multiple language and version support. Created with PHP without any major framework and tested with PHPUnit. Documentation made with OpenAPI/Swagger.",
      *  version="1.0"
      * )
      */
