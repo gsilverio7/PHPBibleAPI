@@ -1,6 +1,6 @@
 <?php
 
-namespace API\Utils;
+namespace BibleAPI\Utils;
 
 class Response
 {

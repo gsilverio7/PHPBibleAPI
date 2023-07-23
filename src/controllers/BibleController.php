@@ -1,8 +1,8 @@
 <?php
 
-namespace API\Controllers;
+namespace BibleAPI\Controllers;
 
-use API\Utils\Response;
+use BibleAPI\Utils\Response;
 
 class BibleController 
 {

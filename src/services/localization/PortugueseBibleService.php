@@ -1,8 +1,8 @@
 <?php
 
-namespace API\Services\Localization;
+namespace BibleAPI\Services\Localization;
 
-use API\Services\BibleService;
+use BibleAPI\Services\BibleService;
 
 class PortugueseBibleService extends BibleService
 {

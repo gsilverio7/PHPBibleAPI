@@ -4,7 +4,7 @@ use Pecee\SimpleRouter\SimpleRouter as Router;
 use Pecee\Http\Url;
 use Pecee\Http\Response;
 use Pecee\Http\Request;
-use API\Controllers\BibleController;
+use BibleAPI\Controllers\BibleController;
 
 Router::error(function(Request $request, \Exception $exception) {
     switch ($exception->getCode()) {
@@ -13,7 +13,7 @@ Router::error(function(Request $request, \Exception $exception) {
             $errorMessage = 'Resource not found. Check the URL requested is correct.';
             break;
         case 500:
-            $errorMessage = 'Something went wrong in our side. We will try to fix as soon as possible.';
+            $errorMessage = 'Something went wrong in our side. Try again later.';
             break;
         */
         default:

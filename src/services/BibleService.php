@@ -1,9 +1,9 @@
 <?php
 
-namespace API\Services;
+namespace BibleAPI\Services;
 
 use JsonMachine\Items;
-use API\Utils\Response;
+use BibleAPI\Utils\Response;
 
 abstract class BibleService
 {
