@@ -39,14 +39,4 @@ Router::get('/api/{lang}/{version}/{book}/{chapter}/{verses?}',[BibleController:
 
 Router::get('/api/info', [BibleController::class, 'showInfo']);
 
-Router::get('/test', function() {
-    $bc = new BibleController();
-    return $bc->showInfo();
-});
-
-Router::get('/test2', function() {
-    $bc = new \BibleAPI\Controllers\BibleController();
-    return $bc->showInfo();
-});
-
 Router::start();
