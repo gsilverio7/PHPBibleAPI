@@ -4,6 +4,7 @@ use Pecee\SimpleRouter\SimpleRouter as Router;
 use Pecee\Http\Url;
 use Pecee\Http\Response;
 use Pecee\Http\Request;
+use API\Controllers\BibleController;
 
 Router::error(function(Request $request, \Exception $exception) {
     switch ($exception->getCode()) {
@@ -33,11 +34,9 @@ Router::get('/openapi', function() {
     require_once(__DIR__ . '/../api/openapi.json');
 });
 
-Router::setDefaultNamespace('API\Controllers');
-
-Router::get('/api/{lang}/{version}/{book}/{chapter}/{verses?}', 'BibleController@getVerses')
+Router::get('/api/{lang}/{version}/{book}/{chapter}/{verses?}',[BibleController::class, 'getVerses'])
     ->where([ 'chapter' => '[0-9]+', 'verses' => '.*' ]);
 
-Router::get('/api/info', 'BibleController@showInfo');
+Router::get('/api/info', [BibleController::class, 'showInfo']);
 
 Router::start();
