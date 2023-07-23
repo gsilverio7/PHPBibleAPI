@@ -42,8 +42,7 @@ You can add new languages and versions in three steps:
 
 ## Pictures
 
+![alt text](https://github.com/gsilverio7/PHPBibleAPI/blob/master/pictures/phpbibleapi.png)
 
-
-Sorry for the lazy readme.
 
 
