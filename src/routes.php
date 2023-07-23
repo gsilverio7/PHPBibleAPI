@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 use Pecee\SimpleRouter\SimpleRouter as Router;
 use Pecee\Http\Url;
 use Pecee\Http\Response;
@@ -32,8 +34,10 @@ Router::get('/openapi', function() {
 });
 
 Router::setDefaultNamespace('API\Controllers');
+
 Router::get('/api/{lang}/{version}/{book}/{chapter}/{verses?}', 'BibleController@getVerses')
     ->where([ 'chapter' => '[0-9]+', 'verses' => '.*' ]);
+
 Router::get('/api/info', 'BibleController@showInfo');
 
 Router::start();
