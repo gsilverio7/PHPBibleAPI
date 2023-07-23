@@ -17,8 +17,8 @@ class BibleController
     private $services;
 
     public function __construct() {
-        $this->services['pt'] = new \API\Services\Localization\PortugueseBibleService;
-        $this->services['en'] = new \API\Services\Localization\EnglishBibleService;
+        $this->services['pt'] = new \BibleAPI\Services\Localization\PortugueseBibleService;
+        $this->services['en'] = new \BibleAPI\Services\Localization\EnglishBibleService;
     }
     
     /**
