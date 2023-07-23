@@ -18,13 +18,13 @@ You can see the project live at https://php-bible-api.vercel.app/.
 
 You can start the project at http://localhost:8000 by running the following commands:
 
-``
+```
 composer install
-``
+```
 
-``
+```
 composer serve
-``
+```
 
 The API has only two endpoints, wich are explained in the main page.
 
