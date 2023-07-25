@@ -4,11 +4,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "BibleAPI\\": "src/",
-            "BibleAPI\\Controllers\\": "src/controllers",
-            "BibleAPI\\Services\\": "src/services",
-            "BibleAPI\\Services\\Localization\\": "src/services/localization",
-            "BibleAPI\\Utils\\": "src/utils"
+            "BibleAPI\\": "src/"
         }
     },
     "authors": [
