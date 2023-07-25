@@ -12,6 +12,7 @@ class EnglishBibleService extends BibleService
         'bbe' => 'Basic Bible English',
         'kjv' => 'King James Version'
     ];
+    //Optional
     protected $books = [    
         'Genesis',
         'Exodus',

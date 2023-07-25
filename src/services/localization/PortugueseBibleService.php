@@ -13,6 +13,7 @@ class PortugueseBibleService extends BibleService
         'acf' => 'Almeida Corrigida Fiel',
         'nvi' => 'Nova Versão Internacional'
     ];
+    //Optional
     protected $books = [
         'Gênesis',
         'Êxodo',

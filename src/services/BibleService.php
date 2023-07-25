@@ -13,6 +13,7 @@ abstract class BibleService
         'bv' => 'Bible Version',
         'abv' => 'Another Bible Version'
     ];
+    //Optional
     protected $books = [
         'Genesis',
         'Exodus',
