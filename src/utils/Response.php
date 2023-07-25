@@ -8,6 +8,7 @@ class Response
     {
         if (! headers_sent()) {
             header('Content-Type: application/json');
+            header('Cache-Control: max-age=3600');
         }
 
         http_response_code($statusCode);       
