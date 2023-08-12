@@ -1,5 +1,7 @@
 # PHP RESTful Bible API
 
+Bible RESTful API developed with pure PHP, without any major frameworks. Uses bibles in JSON format.
+
 I developed this project for some reasons: 
 - To study pure PHP without a framework environment
 - Study API RESTful standards
