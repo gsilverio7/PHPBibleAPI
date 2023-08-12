@@ -12,8 +12,9 @@ You can see the project live at https://php-bible-api.vercel.app/.
 ## Requirements
 
 - PHP 8.0.*
-- Composer
-
+- Composer <br>
+OR
+- Docker
 ## How to use
 
 You can start the project at http://localhost:8000 by running the following commands:
@@ -24,6 +25,12 @@ composer install
 
 ```
 composer serve
+```
+
+Alternatively, you can use docker and run the project with the following command:
+
+```
+docker-compose up
 ```
 
 The API has only two endpoints, wich are explained in the main page.
