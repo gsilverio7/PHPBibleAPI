@@ -10,9 +10,6 @@
     <div id="ui-wrapper-new" data-spec="{{spec}}">
         Loading....
     </div>
-    <footer style="position: fixed; width: 100%; bottom: 10px; text-align: center;">
-      Gabriel Silvério &copy; <?php echo date('Y') ?>
-    </footer>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.1.3/swagger-ui-bundle.js" integrity="sha512-Ykto0zfR5srIdvI1T4vbYEWEPEMFtWOKz8E4/t1SYf/gcXuiuDEbtOoXH4p6887kY3O3GezjApLzFmPbrZ+54w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
