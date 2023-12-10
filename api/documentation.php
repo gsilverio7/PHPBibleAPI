@@ -40,8 +40,10 @@
         + '</a>';
     }, 500);
 
-
-    /** Export to window for use in custom js */
+    /** Export to window for use in Swagger custom js */
     window.ui = ui
+    /** Vercel Analytics */
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
 </html>
