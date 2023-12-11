@@ -1,2 +1,5 @@
-/vendor
+vendor
+reports
+.phpunit.cache
+.phpunit.result.cache
 .vercel
